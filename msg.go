@@ -509,6 +509,14 @@ func (m *Msg) SetGenHeader(header Header, values ...string) {
 	m.genHeader[header] = values
 }
 
+func (m *Msg) RemoveGenHeader(header Header) {
+	delete(m.genHeader, header)
+}
+
+func (m *Msg) RemoveAddrHeader(header AddrHeader) {
+	delete(m.addrHeader, header)
+}
+
 // SetHeaderPreformatted sets a generic header field of the Msg, which content is already preformatted.
 //
 // Deprecated: This method only exists for compatibility reasons. Please use

@@ -574,7 +574,7 @@ func parseEMLAttachmentEmbed(contentDisposition []string, multiPart *multipart.P
 	cdType, optional := parseMultiPartHeader(contentDisposition[0])
 	filename := "generic.attachment"
 	if name, ok := optional["filename"]; ok {
-		filename = name[1 : len(name)-1]
+		filename = strings.Trim(strings.Split(name, ";")[0], " \"")
 	}
 
 	var dataReader io.Reader
